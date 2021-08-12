@@ -1,0 +1,20 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 87.5%; /* 14px/16px = 87.5% -> 1rem = 10px */
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: whitesmoke;
+  font-weight: 300;
+  line-height: 1.6;
+  background-color: #ced4da;
+}

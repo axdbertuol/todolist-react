@@ -1,0 +1,31 @@
+.list-item {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  margin-top: 0.3rem;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background-color: #6610f2;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.list-item-text {
+  font-size: 1.2rem;
+  margin: 1rem;
+  color: black;
+  overflow: hidden;
+  font-weight: 400;
+}
+
+.list-item-icon {
+  margin-right: 1rem;
+  margin-left: auto;
+}
+
+.list-item-check {
+  height: 2rem;
+  width: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  justify-self: end;
+}
