@@ -6,9 +6,9 @@ const Input = () => {
     <input
       type="text"
       id="inputTodo"
-      value=""
+      className="input"
       placeholder="Insira uma tarefa aqui!"
-      maxlength="50"
+      maxLength="50"
     />
   );
 };

@@ -1,4 +1,10 @@
+.btn {
+  font-size: 1.2rem;
+}
 .btn-rnd {
   border-radius: 10px;
-  font-size: 1.2rem;
+}
+
+.btn-lg {
+  width: 10rem;
 }

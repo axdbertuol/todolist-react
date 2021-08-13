@@ -1,0 +1,13 @@
+.list-item {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  margin-top: 0.3rem;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background-color: #6610f2;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+
+
