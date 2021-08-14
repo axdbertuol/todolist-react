@@ -8,13 +8,13 @@ const SimpleText = ({ text, checked, style = {} }) => {
       className="simple-text"
       style={{ ...style, textDecoration: checked ? 'line-through' : '' }}
     >
-      {text || ''}
+      {text}
     </p>
   );
 };
 
 SimpleText.propTypes = {
-  text: PropTypes.string,
+  text: PropTypes.string.isRequired,
   style: PropTypes.object,
 };
 export default SimpleText;

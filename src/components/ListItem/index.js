@@ -7,12 +7,12 @@ import SimpleText from '../SimpleText';
 import Button from '../Button';
 import { Context as DataContext } from '../../contexts/DataContext';
 
-const ListItem = ({ checked, text, id }) => {
-  const { state, removeTask } = useContext(DataContext);
+const ListItem = ({ checked = false, text, id }) => {
+  const { removeTask } = useContext(DataContext);
   const onClickRemove = (e) => {
     e.preventDefault();
-    // console.log(e);
     removeTask(e.target.parentElement.id);
+    localStorage.removeItem(e.target.parentElement.id);
   };
   return (
     <li id={id} className="list-item">
@@ -31,8 +31,8 @@ const ListItem = ({ checked, text, id }) => {
 
 ListItem.propTypes = {
   checked: PropTypes.bool,
-  text: PropTypes.string,
-  key: PropTypes.string,
+  text: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default ListItem;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './button.css';
 
 const Button = ({
@@ -23,11 +24,22 @@ const Button = ({
         color: color || 'black',
       }}
       type={type || 'button'}
-      onClick={onClick}
+      onClick={onClick || (() => {})}
     >
       {text}
     </button>
   );
+};
+
+Button.propTypes = {
+  rounded: PropTypes.bool,
+  large: PropTypes.bool,
+  bgColor: PropTypes.string,
+  color: PropTypes.string,
+  style: PropTypes.object,
+  text: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default Button;

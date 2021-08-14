@@ -7,7 +7,7 @@ const List = ({ children }) => {
 };
 
 List.propTypes = {
-  // propTypes: PropTypes.shape({}),
+  children: PropTypes.node.isRequired,
 };
 
 export default List;
