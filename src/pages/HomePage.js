@@ -5,13 +5,8 @@ import Input from '../components/Input';
 import ListItem from '../components/ListItem';
 import Button from '../components/Button';
 import { Context as DataContext } from '../contexts/DataContext';
+import { getRandomInt } from '../utils';
 import './homepage.css';
-
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-}
 
 const HomePage = () => {
   // const [tasks, setTasks] = useState([]);
