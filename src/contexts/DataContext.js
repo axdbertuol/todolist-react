@@ -29,7 +29,7 @@ const removeTask = (dispatch) => (id) => {
 };
 
 export const { Context, Provider } = createDataContext(
-  dataReducer,
-  { addTask, removeTask },
-  { tasks: [] }
+  dataReducer, // reducer
+  { addTask, removeTask }, // functions
+  { tasks: [] } // state
 );

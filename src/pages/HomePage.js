@@ -19,6 +19,8 @@ const HomePage = () => {
     e.preventDefault();
     // console.log(e.target[0].value);
     //TODO: check if id exists
+
+    //  This function will trigger the useEffect down below
     addTask({
       id: 'task' + getRandomInt(0, 10000000),
       text: e.target[0].value,
@@ -26,6 +28,7 @@ const HomePage = () => {
     });
   };
 
+  // Triggers everytime tasks is changed
   useEffect(() => {
     if (tasks && tasks.length > 0) {
       localStorage.setItem('tasks', JSON.stringify(tasks));
