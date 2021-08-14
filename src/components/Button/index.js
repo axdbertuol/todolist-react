@@ -1,7 +1,16 @@
 import React from 'react';
 import './button.css';
 
-const Button = ({ rounded, large, bgColor, color, style, text, type }) => {
+const Button = ({
+  rounded,
+  large,
+  bgColor,
+  color,
+  style,
+  text,
+  type,
+  onClick,
+}) => {
   let className = rounded && 'btn-rnd';
   className += large && ' btn-lg';
 
@@ -14,6 +23,7 @@ const Button = ({ rounded, large, bgColor, color, style, text, type }) => {
         color: color || 'black',
       }}
       type={type || 'button'}
+      onClick={onClick}
     >
       {text}
     </button>

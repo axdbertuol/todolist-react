@@ -1,22 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './list-item.css';
 import PropTypes from 'prop-types';
 
 import Checkbox from '../Checkbox';
 import SimpleText from '../SimpleText';
 import Button from '../Button';
+import { Context as DataContext } from '../../contexts/DataContext';
 
-const ListItem = ({ checked, text, key }) => {
+const ListItem = ({ checked, text, id }) => {
+  const { state, removeTask } = useContext(DataContext);
+  const onClickRemove = (e) => {
+    e.preventDefault();
+    // console.log(e);
+    removeTask(e.target.parentElement.id);
+  };
   return (
-    <li className="list-item">
+    <li id={id} className="list-item">
       <Checkbox checked={checked} />
       <SimpleText text={text} checked={checked} />
       <Button
         rounded
-        // bgColor={'red'}
         color={'red'}
         style={{ marginRight: '1rem', marginLeft: 'auto' }}
         text={'X'}
+        onClick={onClickRemove}
       />
     </li>
   );
