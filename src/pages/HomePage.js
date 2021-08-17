@@ -5,6 +5,7 @@ import Input from '../components/Input';
 import ListItem from '../components/ListItem';
 import Button from '../components/Button';
 import { Context as DataContext } from '../contexts/DataContext';
+import useLocalStorage from '../hooks/useLocalStorage';
 import { getRandomInt } from '../utils';
 import './homepage.css';
 
@@ -13,6 +14,7 @@ const HomePage = () => {
   const {
     state: { tasks },
     addTask,
+    setTasksFromLocalStorage,
   } = useContext(DataContext);
 
   const onClickInsert = (e) => {
@@ -28,11 +30,18 @@ const HomePage = () => {
     });
   };
 
+  // get data from localStorage on mount
+  useEffect(() => {
+    if (localStorage.getItem('tasks')) {
+      setTasksFromLocalStorage(JSON.parse(localStorage.getItem('tasks')));
+    }
+  }, []);
+
   // Triggers everytime tasks is changed
   useEffect(() => {
-    if (tasks && tasks.length > 0) {
+    if (tasks) {
       localStorage.setItem('tasks', JSON.stringify(tasks));
-      console.log(tasks);
+      console.log('localStorage updated with', tasks);
     }
   }, [tasks]);
 
