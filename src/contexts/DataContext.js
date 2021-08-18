@@ -22,7 +22,7 @@ const dataReducer = (state, action) => {
         ...state,
         tasks: action.payload,
       };
-    case 'set_task_checked':
+    case 'handle_task_checked':
       return {
         ...state,
         tasks: state.tasks.map((task) => {
@@ -62,12 +62,12 @@ setTasksFromLocalStorage.propTypes = {
   tasks: PropTypes.array.isRequired,
 };
 
-const setTaskChecked = (dispatch) => (id) => {
-  dispatch({ type: 'set_task_checked', payload: { id } });
+const handleTaskChecked = (dispatch) => (id) => {
+  dispatch({ type: 'handle_task_checked', payload: { id } });
 };
 
 export const { Context, Provider } = createDataContext(
   dataReducer, // reducer
-  { addTask, removeTask, setTasksFromLocalStorage, setTaskChecked }, // functions  (actions)
+  { addTask, removeTask, setTasksFromLocalStorage, handleTaskChecked }, // functions  (actions)
   { tasks: [] } // state
 );

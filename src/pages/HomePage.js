@@ -15,7 +15,7 @@ const HomePage = () => {
     addTask,
     setTasksFromLocalStorage,
     removeTask,
-    setTaskChecked,
+    handleTaskChecked,
   } = useContext(DataContext);
 
   const onClickRemove = (e) => {
@@ -25,11 +25,16 @@ const HomePage = () => {
 
   const onClickInsert = (e) => {
     e.preventDefault();
-    //TODO: check if id exists
+    let id;
+    let idExists;
+    do {
+      id = 'task' + getRandomInt(0, 1000);
+      idExists = tasks.find((task) => task.id === id);
+    } while (idExists);
 
     //  This function will trigger the useEffect down below
     addTask({
-      id: 'task' + getRandomInt(0, 10000000),
+      id,
       text: e.target[0].value,
       checked: false,
     });
@@ -61,7 +66,7 @@ const HomePage = () => {
             const handleCheck = (e) => {
               checked = e.target.checked;
               // seta o checked no state deste objeto
-              setTaskChecked(id);
+              handleTaskChecked(id);
             };
             return (
               <ListItem
