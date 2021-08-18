@@ -27,7 +27,8 @@ const dataReducer = (state, action) => {
         ...state,
         tasks: state.tasks.map((task) => {
           if (task.id === action.payload.id) {
-            task.checked = action.payload.checked;
+            task = { ...task, checked: !task.checked };
+            console.log({ task });
           }
           return task;
         }),
@@ -52,6 +53,8 @@ removeTask.propTypes = {
 };
 
 const setTasksFromLocalStorage = (dispatch) => (tasks) => {
+  console.log(typeof tasks);
+  console.log('tasks from localStorage', tasks);
   dispatch({ type: 'set_tasks_from_local_storage', payload: tasks });
 };
 
@@ -59,8 +62,8 @@ setTasksFromLocalStorage.propTypes = {
   tasks: PropTypes.array.isRequired,
 };
 
-const setTaskChecked = (dispatch) => (id, checked) => {
-  dispatch({ type: 'set_task_checked', payload: { id, checked } });
+const setTaskChecked = (dispatch) => (id) => {
+  dispatch({ type: 'set_task_checked', payload: { id } });
 };
 
 export const { Context, Provider } = createDataContext(

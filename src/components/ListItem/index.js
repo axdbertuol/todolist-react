@@ -5,33 +5,24 @@ import PropTypes from 'prop-types';
 import Checkbox from '../Checkbox';
 import SimpleText from '../SimpleText';
 import Button from '../Button';
+import useLocalStorage from '../../hooks/useLocalStorage';
 import { Context as DataContext } from '../../contexts/DataContext';
 
-const ListItem = ({ checked = false, text, id }) => {
-  const [didCheck, setDidCheck] = useState(checked);
-  const {
-    state: { tasks },
-    removeTask,
-    setTaskChecked,
-  } = useContext(DataContext);
+const ListItem = ({ checked, text, id }) => {
+  const [didCheck, setDidCheck] = useState(checked || false);
+  const { removeTask, setTaskChecked } = useContext(DataContext);
+
   const onClickRemove = (e) => {
     e.preventDefault();
     removeTask(e.target.parentElement.id);
   };
 
   const handleCheck = (e) => {
-    e.preventDefault();
     setDidCheck(!didCheck);
-    setTaskChecked(id, didCheck);
-    // localStorage.setItem('tasks', JSON.stringify(tasks));
+    setTaskChecked(id);
   };
 
-  useEffect(() => {
-    if (tasks) {
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-      console.log('localStorage updated with', tasks);
-    }
-  }, [tasks]);
+  useLocalStorage();
 
   return (
     <li id={id} className="list-item">

@@ -10,7 +10,6 @@ import { getRandomInt } from '../utils';
 import './homepage.css';
 
 const HomePage = () => {
-  // const [tasks, setTasks] = useState([]);
   const {
     state: { tasks },
     addTask,
@@ -19,7 +18,6 @@ const HomePage = () => {
 
   const onClickInsert = (e) => {
     e.preventDefault();
-    // console.log(e.target[0].value);
     //TODO: check if id exists
 
     //  This function will trigger the useEffect down below
@@ -33,17 +31,14 @@ const HomePage = () => {
   // get data from localStorage on mount
   useEffect(() => {
     if (localStorage.getItem('tasks')) {
-      setTasksFromLocalStorage(JSON.parse(localStorage.getItem('tasks')));
+      const tasksFromLocalStorage = localStorage.getItem('tasks');
+      // console.log(tasksFromLocalStorage);
+      setTasksFromLocalStorage(JSON.parse(tasksFromLocalStorage));
     }
   }, []);
 
   // Triggers everytime tasks is changed
-  useEffect(() => {
-    if (tasks) {
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-      console.log('localStorage updated with', tasks);
-    }
-  }, [tasks]);
+  useLocalStorage();
 
   return (
     <div className="mainContainer">
