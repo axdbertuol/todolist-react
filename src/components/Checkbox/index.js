@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './checkbox.css';
 
@@ -15,6 +15,7 @@ const Checkbox = ({ checked, handleCheck }) => {
 };
 
 Checkbox.propTypes = {
-  checked: PropTypes.bool,
+  checked: PropTypes.bool.isRequired,
+  handleCheck: PropTypes.func.isRequired,
 };
 export default Checkbox;

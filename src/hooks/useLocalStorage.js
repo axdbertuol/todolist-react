@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { Context as DataContext } from '../contexts/DataContext';
 
 const useLocalStorage = () => {
@@ -8,8 +8,6 @@ const useLocalStorage = () => {
 
   useEffect(() => {
     if (tasks) {
-      console.log('tasks', tasks);
-
       localStorage.setItem('tasks', JSON.stringify(tasks));
     }
   }, [tasks]);

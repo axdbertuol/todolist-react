@@ -66,6 +66,10 @@ const handleTaskChecked = (dispatch) => (id) => {
   dispatch({ type: 'handle_task_checked', payload: { id } });
 };
 
+handleTaskChecked.propTypes = {
+  id: PropTypes.string.isRequired,
+};
+
 export const { Context, Provider } = createDataContext(
   dataReducer, // reducer
   { addTask, removeTask, setTasksFromLocalStorage, handleTaskChecked }, // functions  (actions)

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import List from '../components/List';
 import Header from '../components/Header';
 import Input from '../components/Input';

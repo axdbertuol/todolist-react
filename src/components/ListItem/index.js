@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React from 'react';
 import './list-item.css';
 import PropTypes from 'prop-types';
 
@@ -26,6 +26,8 @@ ListItem.propTypes = {
   checked: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  handleCheck: PropTypes.func.isRequired,
+  onClickRemove: PropTypes.func.isRequired,
 };
 
 export default ListItem;
