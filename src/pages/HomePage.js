@@ -14,7 +14,14 @@ const HomePage = () => {
     state: { tasks },
     addTask,
     setTasksFromLocalStorage,
+    removeTask,
+    setTaskChecked,
   } = useContext(DataContext);
+
+  const onClickRemove = (e) => {
+    e.preventDefault();
+    removeTask(e.target.parentElement.id);
+  };
 
   const onClickInsert = (e) => {
     e.preventDefault();
@@ -32,7 +39,6 @@ const HomePage = () => {
   useEffect(() => {
     if (localStorage.getItem('tasks')) {
       const tasksFromLocalStorage = localStorage.getItem('tasks');
-      // console.log(tasksFromLocalStorage);
       setTasksFromLocalStorage(JSON.parse(tasksFromLocalStorage));
     }
   }, []);
@@ -51,9 +57,23 @@ const HomePage = () => {
       </form>
       <List>
         {tasks &&
-          tasks.map(({ checked, text, id }, index) => (
-            <ListItem checked={checked} text={text} key={index} id={id} />
-          ))}
+          tasks.map(({ checked, text, id }, index) => {
+            const handleCheck = (e) => {
+              checked = e.target.checked;
+              // seta o checked no state deste objeto
+              setTaskChecked(id);
+            };
+            return (
+              <ListItem
+                onClickRemove={onClickRemove}
+                handleCheck={handleCheck}
+                checked={checked}
+                text={text}
+                key={index}
+                id={id}
+              />
+            );
+          })}
       </List>
     </div>
   );

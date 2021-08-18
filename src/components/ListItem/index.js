@@ -5,29 +5,12 @@ import PropTypes from 'prop-types';
 import Checkbox from '../Checkbox';
 import SimpleText from '../SimpleText';
 import Button from '../Button';
-import useLocalStorage from '../../hooks/useLocalStorage';
-import { Context as DataContext } from '../../contexts/DataContext';
 
-const ListItem = ({ checked, text, id }) => {
-  const [didCheck, setDidCheck] = useState(checked || false);
-  const { removeTask, setTaskChecked } = useContext(DataContext);
-
-  const onClickRemove = (e) => {
-    e.preventDefault();
-    removeTask(e.target.parentElement.id);
-  };
-
-  const handleCheck = (e) => {
-    setDidCheck(!didCheck);
-    setTaskChecked(id);
-  };
-
-  useLocalStorage();
-
+const ListItem = ({ checked, text, id, handleCheck, onClickRemove }) => {
   return (
     <li id={id} className="list-item">
-      <Checkbox checked={didCheck} handleCheck={handleCheck} />
-      <SimpleText text={text} checked={didCheck} />
+      <Checkbox checked={checked} handleCheck={handleCheck} />
+      <SimpleText text={text} checked={checked} />
       <Button
         rounded
         color={'red'}

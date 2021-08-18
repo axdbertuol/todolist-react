@@ -8,7 +8,6 @@ const Checkbox = ({ checked, handleCheck }) => {
     <input
       className="checkbox"
       type="checkbox"
-      // value={checked}
       checked={checked}
       onChange={handleCheck}
     />
